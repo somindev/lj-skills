@@ -4,7 +4,7 @@
 
 **Goal:** Make generated cards use Li Jun's supplied avatars and display the signature `李珺`.
 
-**Architecture:** Keep the fork's assets under distinct `*-lj*` filenames and update only the render paths, generated-character references, displayed signatures, and instructions that directly describe them. Preserve upstream authorship, repository metadata, installation commands, and unrelated personal workflow notes.
+**Architecture:** Keep the fork's assets under distinct `*-lj*` filenames and update the render paths, generated-character references, displayed signatures, and personalized workflow instructions. Preserve upstream authorship, repository metadata, installation commands, and historical notes outside these skills.
 
 **Tech Stack:** HTML templates, Node.js with Playwright, Python 3 scripts, Markdown skill instructions, shell verification with `rg`.
 
@@ -121,10 +121,7 @@ Run:
 
 ```bash
 test -f skills/ljg-library/assets/lj-portrait.png \
-  && ! rg -n "ljg-portrait" skills/ljg-library \
-  && ! rg -n "李继刚" skills/ljg-library/assets/library_template.html \
-  && ! rg -n "继刚(作主角|在|认得出|就是| = |（你）|独自|仍在|固定|亲历|作 character reference)" \
-    skills/ljg-library
+  && ! rg -n "ljg-portrait|李继刚|继刚" skills/ljg-library
 ```
 
 Expected: exit status `1`; the generator and instructions still reference `ljg-portrait.png` and the old protagonist identity.
@@ -148,36 +145,26 @@ with_name("ljg-portrait.png") -> with_name("lj-portrait.png")
 Apply these changes:
 
 ```text
+For each file below, replace 李继刚 -> 李珺 before replacing any remaining 继刚 -> 李珺.
+
 skills/ljg-library/assets/library_template.html
   assets/ljg-portrait.png -> assets/lj-portrait.png
   继刚作主角 -> 李珺作主角
   李继刚 -> 李珺
 
 skills/ljg-library/SKILL.md
-  In the description and protagonist workflow at lines 3, 15, 36, 80, 117, 124, and 127:
-    继刚 -> 李珺
-    assets/ljg-portrait.png -> assets/lj-portrait.png
+  继刚 -> 李珺
+  assets/ljg-portrait.png -> assets/lj-portrait.png
 
 skills/ljg-library/references/example.md
-  Replace every protagonist reference:
-    继刚 -> 李珺
+  继刚 -> 李珺
 
 skills/ljg-library/references/extraction.md
-  In the illustrated examples and generation guidance at lines 35, 45, 49, 55, and 74:
-    继刚 -> 李珺
-    assets/ljg-portrait.png -> assets/lj-portrait.png
+  继刚 -> 李珺
+  assets/ljg-portrait.png -> assets/lj-portrait.png
 
 skills/ljg-library/references/visual.md
-  印 李继刚 -> 印 李珺
-  生成图里继刚认得出 -> 生成图里李珺认得出
-```
-
-Keep these unrelated upstream notes unchanged:
-
-```text
-继刚有微信读书
-这是继刚定的规矩
-继刚定的精确值
+  继刚 -> 李珺
 ```
 
 - [ ] **Step 4: Run syntax and identity checks**
@@ -187,10 +174,7 @@ Run:
 ```bash
 uv run python -m py_compile skills/ljg-library/assets/gen_illustration.py
 test -f skills/ljg-library/assets/lj-portrait.png \
-  && ! rg -n "ljg-portrait" skills/ljg-library \
-  && ! rg -n "李继刚" skills/ljg-library/assets/library_template.html \
-  && ! rg -n "继刚(作主角|在|认得出|就是| = |（你）|独自|仍在|固定|亲历|作 character reference)" \
-    skills/ljg-library
+  && ! rg -n "ljg-portrait|李继刚|继刚" skills/ljg-library
 ```
 
 Expected: Python compilation succeeds and the identity check exits with status `0`.

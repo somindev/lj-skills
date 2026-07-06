@@ -9,11 +9,12 @@ Replace the generated cards' displayed identity with Li Jun's assets and signatu
 - Make `ljg-card` use `assets/logo-lj.png`.
 - Make `ljg-library` and `ljg-map` use their local `assets/lj-portrait.png` files as character references.
 - Change rendered signatures from `李继刚` to `李珺`.
-- Update instructions and verification checklists that directly describe these avatar and signature outputs.
+- Change personal workflow notes and generated-character instructions from `继刚` to `李珺`.
+- Update verification checklists that describe these avatar and signature outputs.
 
 ## Boundaries
 
-- Keep plugin author metadata, repository URLs, installation commands, original author credits, and historical notes unchanged.
+- Keep plugin author metadata, repository URLs, installation commands, original author credits, and historical notes outside the personalized skill instructions unchanged.
 - Keep the new asset filenames distinct from the upstream filenames.
 - Avoid unrelated formatting, refactoring, and content changes.
 
