@@ -1,6 +1,6 @@
 ---
 name: ljg-library
-description: "一本书 → 一幅清晰的「取景框」意向画面 → 一张 2050 图书馆借书卡（PNG）。取景框 = 作者从哪个角度看什么问题、看到了哪幅画面；卡上有真实封面、作者头像、书目信息。取景框 block 用费曼式讲解把这幅意向画面讲得通俗又准确；图解 block 用 AI 生图把这幅画面画出来，继刚是固定主角（从其墨像参考生成、认得出的他）。图解风格：吉田诚治式绘本感（异世界日常空间、暖光斜射、治愈又精致）。浅色光学玻璃卡身、强调色从封面动态提取、宽高自适应。合上书记住这幅画面，就没白读。Use when user says '取景框卡', '图书馆卡', 'library card', '书卡', '铸书卡', '一本书一句话一张卡', '/ljg-library', or provides a book name and wants it distilled into one collectible card. NOT FOR 拆书结构分析（用 ljg-book）、纯文字金句（用 ljg-card -b）、信息图（用 ljg-card -i）、视觉笔记（用 ljg-card -v）。"
+description: "一本书 → 一幅清晰的「取景框」意向画面 → 一张 2050 图书馆借书卡（PNG）。取景框 = 作者从哪个角度看什么问题、看到了哪幅画面；卡上有真实封面、作者头像、书目信息。取景框 block 用费曼式讲解把这幅意向画面讲得通俗又准确；图解 block 用 AI 生图把这幅画面画出来，李珺是固定主角（从其墨像参考生成、认得出的他）。图解风格：吉田诚治式绘本感（异世界日常空间、暖光斜射、治愈又精致）。浅色光学玻璃卡身、强调色从封面动态提取、宽高自适应。合上书记住这幅画面，就没白读。Use when user says '取景框卡', '图书馆卡', 'library card', '书卡', '铸书卡', '一本书一句话一张卡', '/ljg-library', or provides a book name and wants it distilled into one collectible card. NOT FOR 拆书结构分析（用 ljg-book）、纯文字金句（用 ljg-card -b）、信息图（用 ljg-card -i）、视觉笔记（用 ljg-card -v）。"
 user_invocable: true
 version: "3.3.0"
 ---
@@ -12,7 +12,7 @@ version: "3.3.0"
 一张卡两块活：
 
 - **取景框 block（文字）**：主句 `{{FRAME}}` 一句话点出这幅画面，费曼讲解 `{{EXP}}` 把它讲给聪明的外行听。`{{EXP}}` 必须走 `feynman-eli5` skill 生成，不手写。
-- **图解 block（生图）**：把同一幅画面交给 `assets/gen_illustration.py` 画出来。继刚是每张图的主角——脚本把他的墨像（`assets/ljg-portrait.png`）作 character reference 喂给模型，画出认得出的他，让他在画面里亲历那个核心动作——主动做，或被动承受。风格是吉田诚治式绘本感：异世界日常空间、暖光斜射、蜜糖琥珀木棕暖调、建筑透视扎实、植物书本器物细节堆叠、魔法工房旧书店图书馆一类治愈场所，场景内自然手写中文字，继刚是栖居其中的小身形人物。风格已写死在脚本里，frame 只写画什么。
+- **图解 block（生图）**：把同一幅画面交给 `assets/gen_illustration.py` 画出来。李珺是每张图的主角——脚本把他的墨像（`assets/lj-portrait.png`）作 character reference 喂给模型，画出认得出的他，让他在画面里亲历那个核心动作——主动做，或被动承受。风格是吉田诚治式绘本感：异世界日常空间、暖光斜射、蜜糖琥珀木棕暖调、建筑透视扎实、植物书本器物细节堆叠、魔法工房旧书店图书馆一类治愈场所，场景内自然手写中文字，李珺是栖居其中的小身形人物。风格已写死在脚本里，frame 只写画什么。
 
 文字和图讲的必须是同一幅画面。提炼失手，这张卡就只是一张豆瓣读书卡。
 
@@ -20,7 +20,7 @@ version: "3.3.0"
 
 ## 动手前先读两份 reference
 
-- `references/extraction.md` — 怎么从书里提炼意向画面、怎么写生图 frame。提炼是六步：对象、角度、旧画面、意向画面、费曼讲解、校验。继刚若已把想法想透（读完顺手铸卡是常态），直接用他的：只走校验和画图，不重新提炼。
+- `references/extraction.md` — 怎么从书里提炼意向画面、怎么写生图 frame。提炼是六步：对象、角度、旧画面、意向画面、费曼讲解、校验。李珺若已把想法想透（读完顺手铸卡是常态），直接用他的：只走校验和画图，不重新提炼。
 - `references/visual.md` — 卡身规格、配色、字体、出厂自检。
 
 ## 流程
@@ -33,7 +33,7 @@ version: "3.3.0"
 3. 提封面主色 → 卡身强调色（python3 assets/extract_color.py <封面>）
 4. 提炼意向画面（用户给了→校验；没给→extraction.md 六步）
 5. {{FRAME}} 主句 + {{EXP}} 费曼讲解（走 feynman-eli5）
-6. 写 frame（英文构图：继刚在做什么、隐喻物件、信息流向、3-5 个中文标注每个 ≤5 字），生图：
+6. 写 frame（英文构图：李珺在做什么、隐喻物件、信息流向、3-5 个中文标注每个 ≤5 字），生图：
    python3 assets/gen_illustration.py --frame "<...>" --out /tmp/ljg_lib_{slug}_sketch.png
 7. 填 assets/library_template.html 占位变量（{{SKETCH_IMG}} = file://生成图）
 8. 渲染（capture.js，fullpage）
@@ -44,7 +44,7 @@ version: "3.3.0"
 
 ### 封面 + 书目
 
-继刚有微信读书，先走 weread skill 的 `/store/search`（用前 Read `~/.claude/skills/weread/search.md`）：
+李珺有微信读书，先走 weread skill 的 `/store/search`（用前 Read `~/.claude/skills/weread/search.md`）：
 
 ```bash
 curl -s -X POST "https://i.weread.qq.com/api/agent/gateway" \
@@ -77,7 +77,7 @@ curl -sL -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" -o /tmp/ljg_lib_{s
 
 ### 主角参考图
 
-`assets/ljg-portrait.png` 是继刚的真头像抠底墨像，`gen_illustration.py` 自动把它作 character reference 喂给模型。生成的是模型按吉田诚治风格画出来的他——认得出即可，不追求像素级同一张脸。头像要更新，换这个 png 就行。
+`assets/lj-portrait.png` 是李珺的真头像抠底墨像，`gen_illustration.py` 自动把它作 character reference 喂给模型。生成的是模型按吉田诚治风格画出来的他——认得出即可，不追求像素级同一张脸。头像要更新，换这个 png 就行。
 
 ### 卡身强调色
 
@@ -114,17 +114,17 @@ node ~/.claude/skills/ljg-card/assets/capture.js \
 
 ## 交付
 
-1. Read 成品 PNG 亲眼验，图解板放大看。对照 visual.md 的出厂自检：封面加载、讲解把画面讲透、卡身色协调、继刚认得出、画面一眼读懂、中文标注无糊、图文同一幅画面、右侧无豁口、底部无留白。生图不满意就调 frame 重生。
+1. Read 成品 PNG 亲眼验，图解板放大看。对照 visual.md 的出厂自检：封面加载、讲解把画面讲透、卡身色协调、李珺认得出、画面一眼读懂、中文标注无糊、图文同一幅画面、右侧无豁口、底部无留白。生图不满意就调 frame 重生。
 2. 报告文件路径，加一句意向画面的提炼说明。
 
 ## Gotchas
 
 - **封面尺寸**：weread `s_` 是 70×100 缩略图，必糊。换 `t7_`（285×411），下载带 `Referer`。
 - **头像 thumb 陷阱**：Wikimedia `/thumb/.../NNNpx-` 未缓存返回 HTML 错误页。用原图路径，带 User-Agent。
-- **生图必看图**：同一个 frame 每次出的图都不一样，gemini 会糊中文标注、把继刚画得不像、画错动作。每次生成后必 Read 亲验，不行调 frame 重生。重生前把当前这张先存到别的路径——新的未必比旧的好，别把能用的覆盖没了。
+- **生图必看图**：同一个 frame 每次出的图都不一样，gemini 会糊中文标注、把李珺画得不像、画错动作。每次生成后必 Read 亲验，不行调 frame 重生。重生前把当前这张先存到别的路径——新的未必比旧的好，别把能用的覆盖没了。
 - **中文标注 ≤5 字**：长标注和生僻字容易糊。每个标注压到 5 字以内，机制细节让正文扛，别指望画里写清。
 - **frame 里标注用分号或顿号分隔**：` / ` 分隔中文标注会被安全钩子误判成危险命令而 BLOCK，不用斜杠。
-- **frame 要具体可画**：写清继刚亲历的动作、真实隐喻物件、信息怎么流。抽象命题画不出来——回到意向画面，把它落成可见的物和动作（见 extraction.md）。
+- **frame 要具体可画**：写清李珺亲历的动作、真实隐喻物件、信息怎么流。抽象命题画不出来——回到意向画面，把它落成可见的物和动作（见 extraction.md）。
 - **主角风格化，不追同一张脸**：从墨像参考生成，认得出即可。不做真墨像贴脸合成。
 - **两套色不串**：卡身强调色从封面提取；图解板背景是生成图自带的。
 - **/tmp 文件名带 slug**：并行铸卡时生成图、封面、头像都用唯一路径（带书 slug），共享固定名会串图。

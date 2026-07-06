@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ljg-library 图解生成器：把一幅「意向画面」生成为带继刚作主角的卡片插画。
+ljg-library 图解生成器：把一幅「意向画面」生成为带李珺作主角的卡片插画。
 
 用法：
   python3 gen_illustration.py --frame "<英文场景构图+标注>" --out ~/Downloads/x_sketch.png
-  --frame 这张图的具体构图（英文）：继刚在做/经历什么、隐喻物件、信息怎么流、要哪几个中文标注。
+  --frame 这张图的具体构图（英文）：李珺在做/经历什么、隐喻物件、信息怎么流、要哪几个中文标注。
           由 cast 按「意向画面」写出（见 references/extraction.md 第二部分）。
-  --ref   继刚墨像参考图（默认 assets/ljg-portrait.png，同目录）——模型据此把主角画成认得出的继刚。
+  --ref   李珺墨像参考图（默认 assets/lj-portrait.png，同目录）——模型据此把主角画成认得出的李珺。
 
 图解风格固定为吉田诚治式绘本感（绘本感异世界日常空间、暖光斜射、治愈又精致），DNA 已内置，
 frame 只写「画什么」、不用写风格词。
@@ -19,7 +19,7 @@ import argparse, base64, json, os, sys, urllib.request, pathlib
 
 API = "https://api.marswave.ai/openapi/v1/images/generation"
 
-# 图解风格 DNA（吉田诚治）+ 主角规格（继刚从参考图生成、认得出）
+# 图解风格 DNA（吉田诚治）+ 主角规格（李珺从参考图生成、认得出）
 STYLE = (
     "Warm painterly background illustration in the style of Japanese background artist Yoshida Seiji (吉田誠治), "
     "as in his art book ものがたりの家: a cozy, lived-in fantasy-everyday space told like a storybook. "
@@ -69,7 +69,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--frame", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--ref", default=str(pathlib.Path(__file__).with_name("ljg-portrait.png")))
+    ap.add_argument("--ref", default=str(pathlib.Path(__file__).with_name("lj-portrait.png")))
     args = ap.parse_args()
 
     key = os.environ.get("LISTENHUB_API_KEY")
