@@ -30,7 +30,7 @@ STYLE = (
     "a magical workshop / old bookshop / quiet library that feels real enough to live in. "
     "Small neat hand-lettered Chinese labels that sit naturally within the scene. "
     "PROTAGONIST: the man in the reference image as a believable small-to-mid figure INHABITING the space "
-    "(reading / working / walking through it) — KEEP HIM RECOGNIZABLE (his glasses, beard, hairstyle); "
+    "(reading / working / walking through it) — KEEP HIM RECOGNIZABLE (preserve the distinctive visible features from the reference image); "
     "he carries the core action while the warm, detailed environment wraps around him. "
     "Painterly storybook illustration, not pixel art, not flat cartoon, not realistic photo."
 )
