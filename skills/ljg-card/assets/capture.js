@@ -17,7 +17,7 @@ async function main() {
   }
 
   const resolvedHtml = path.resolve(htmlPath);
-  const logoUrl = 'file://' + path.resolve(__dirname, 'logo.png');
+  const logoUrl = 'file://' + path.resolve(__dirname, 'logo-lj.png');
 
   let content = fs.readFileSync(resolvedHtml, 'utf8');
   if (content.includes('{{LOGO}}')) {
