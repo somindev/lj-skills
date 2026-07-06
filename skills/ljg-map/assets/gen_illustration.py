@@ -9,7 +9,7 @@ ljg-map 生态地形图生成器：把一个行业画成「生态地形图」，
   --frame 这个行业的地形构图（英文）：价值之河怎么流、哪里是收窄的瓶颈隘口（red 瓶颈牌）、
           哪里是利润沉淀的价值捕获点（gold 宝藏堆），各功能位是地形上的什么地貌，要哪几个中文地名标注。
           由 cast 按 deep research 出的「价值链 + 瓶颈 + 价值捕获」译成地形（见 references/research.md + visual.md）。
-  --ref   继刚墨像参考图（默认 assets/ljg-portrait.png）——继刚作小测量员/探险者立在地形上俯瞰，认得出他。
+  --ref   李珺墨像参考图（默认 assets/lj-portrait.png）——李珺作小测量员/探险者立在地形上俯瞰，认得出他。
 
 依赖 env: LISTENHUB_API_KEY。直接调 marswave（gemini-3-pro-image），绕交互门控、可进批量管线。
 """
@@ -47,7 +47,7 @@ COMMON = (
   "  - VALUE-CAPTURE 价值捕获: where the profit pools — a GOLD treasure pile / coins / a vault — flag it with a "
   "small GOLD sign reading 价值捕获.\n"
   "The man in the reference image appears SMALL as a recurring surveyor/explorer 你 standing on a vantage point "
-  "overlooking the terrain (keep him recognizable: glasses, beard).\n"
+  "overlooking the terrain (preserve the distinctive visible features from the reference image).\n"
   "SCENE / terrain layout: {frame}\n"
   "Constraints: bird's-eye cozy map feel; only a FEW short hand-written Chinese place labels (2-6 chars each, at "
   "most ~6 total) so nothing gets crowded; render Chinese text correctly; the 瓶颈 (red) and 价值捕获 (gold) spots "
@@ -79,7 +79,7 @@ def main():
     ap.add_argument("--mold", default="a", choices=["a", "c"])
     ap.add_argument("--frame", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--ref", default=str(pathlib.Path(__file__).with_name("ljg-portrait.png")))
+    ap.add_argument("--ref", default=str(pathlib.Path(__file__).with_name("lj-portrait.png")))
     args = ap.parse_args()
 
     key = os.environ.get("LISTENHUB_API_KEY")
