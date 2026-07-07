@@ -5,6 +5,7 @@
 !.gitignore
 !README.md
 !CLAUDE.md
+!FORK_WORKFLOW.md
 
 # 保留插件清单
 !.claude-plugin/
