@@ -88,7 +88,7 @@ caption 一句话点破这张地形的权力结构（如「双头抽租：两处
 ## 研究与视觉两份 reference
 
 - 执行前先 Read `references/research.md`——研究一个行业要问的五组问题、瓶颈与价值捕获的排查步骤、三大问题与 base rate 的提炼标准、研究 agent 扇出纪律。
-- 生成前先 Read `references/visual.md`——玻璃卡身规格、两 mold 调色板、怎么把研究译成地形 frame、出厂自检。再看 `references/example.md`——一张真渲染验收过的范例（AI 影视，双头抽租），frame 可改复用。
+- 生成前先 Read `references/visual.md`——玻璃卡身规格、两 mold 调色板、怎么把研究译成地形 frame、出厂自检。再看 `references/example.md`——一张可复用的范例（AI 影视，双头抽租），frame 可按行业改写。
 
 ## 模板变量（map_template.html）
 
